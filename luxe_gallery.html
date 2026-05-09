@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LUXE - Luxury Fashion Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        background: radial-gradient(circle at top, #060a18, #000000);
+        color:#fff;
+        font-family: Inter, sans-serif;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+    }
+
+    .app{
+        width:100%;
+        max-width:430px;
+        height:100vh;
+        overflow:hidden;
+        background: linear-gradient(180deg, rgba(10,18,40,0.92), rgba(0,0,0,0.98));
+        border:1px solid rgba(212,175,55,0.25);
+        border-radius:22px;
+        display:flex;
+        flex-direction:column;
+        box-shadow: 0 0 80px rgba(0,0,0,0.85);
+    }
+
+    header{
+        padding:14px;
+        text-align:center;
+        font-size:12px;
+        letter-spacing:4px;
+        color:#D4AF37;
+        background: rgba(0,0,0,0.35);
+        backdrop-filter: blur(12px);
+        position:sticky;
+        top:0;
+        z-index:10;
+    }
+
+    .hero{
+        height:160px;
+        overflow:hidden;
+        border-bottom:1px solid rgba(212,175,55,0.15);
+    }
+
+    .slides{
+        display:flex;
+        width:300%;
+        height:100%;
+        animation: slide 12s infinite;
+    }
+
+    .slide{
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-family:"Playfair Display",serif;
+        font-size:18px;
+        color:#D4AF37;
+        background: radial-gradient(circle at top, rgba(212,175,55,0.18), transparent), #0a1228;
+    }
+
+    @keyframes slide{
+        0%{transform:translateX(0);}
+        33%{transform:translateX(-100%);}
+        66%{transform:translateX(-200%);}
+        100%{transform:translateX(0);}
+    }
+
+    .screen{
+        flex:1;
+        overflow-y:auto;
+        padding:12px;
+    }
+
+    .section-title{
+        margin:18px 0 10px;
+        font-size:10px;
+        letter-spacing:2px;
+        color:#D4AF37;
+        opacity:0.9;
+    }
+
+    .card{
+        background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        border:1px solid rgba(212,175,55,0.18);
+        padding:12px;
+        border-radius:18px;
+        margin-bottom:14px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .card:hover{
+        transform:scale(1.02);
+        border:1px solid rgba(212,175,55,0.6);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .card-title{
+        font-size:13px;
+        font-weight:600;
+        margin-bottom:10px;
+    }
+
+    .carousel{
+        overflow:hidden;
+        border-radius:14px;
+    }
+
+    .track{
+        display:flex;
+        gap:10px;
+        width:max-content;
+        animation: scroll 14s linear infinite;
+    }
+
+    .carousel:hover .track{
+        animation-play-state:paused;
+    }
+
+    @keyframes scroll{
+        0%{transform:translateX(0);}
+        100%{transform:translateX(-50%);}
+    }
+
+    .item{
+        min-width:130px;
+        height:130px;
+        border-radius:16px;
+        background: linear-gradient(145deg, rgba(10,18,40,0.9), rgba(0,0,0,0.7));
+        border:1px solid rgba(212,175,55,0.15);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:12px;
+        color:#fff;
+        position:relative;
+        overflow:hidden;
+    }
+
+    .item::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background: radial-gradient(circle at top, rgba(212,175,55,0.18), transparent);
+    }
+
+    .modal{
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.85);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        padding:20px;
+    }
+
+    .modal-content{
+        width:100%;
+        max-width:320px;
+        background:#0a1228;
+        border:1px solid rgba(212,175,55,0.3);
+        border-radius:18px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .close{
+        margin-top:12px;
+        color:#D4AF37;
+        cursor:pointer;
+        font-size:12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<header>LUXE GALLERY</header>
+
+<div class="hero">
+    <div class="slides">
+        <div class="slide">CURATED LUXURY</div>
+        <div class="slide">FASHION • FRAGRANCE</div>
+        <div class="slide">TIMELESS ELEGANCE</div>
+    </div>
+</div>
+
+<div class="screen" id="home">
+
+    <div class="section-title">Top Wear</div>
+
+    <div class="card" onclick="openModal('T-Shirts Collection')">
+        <div class="card-title">T-Shirts</div>
+        <div class="carousel">
+            <div class="track">
+                <div class="item">Tee 1</div>
+                <div class="item">Tee 2</div>
+                <div class="item">Tee 3</div>
+                <div class="item">Tee 4</div>
+                <div class="item">Tee 1</div>
+                <div class="item">Tee 2</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" onclick="openModal('Shirts Collection')">
+        <div class="card-title">Shirts</div>
+        <div class="carousel">
+            <div class="track">
+                <div class="item">Shirt 1</div>
+                <div class="item">Shirt 2</div>
+                <div class="item">Shirt 3</div>
+                <div class="item">Shirt 1</div>
+                <div class="item">Shirt 2</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Fragrance</div>
+
+    <div class="card" onclick="openModal('Perfumes Collection')">
+        <div class="card-title">Perfumes</div>
+        <div class="carousel">
+            <div class="track">
+                <div class="item">Royal 1</div>
+                <div class="item">Royal 2</div>
+                <div class="item">Royal 3</div>
+                <div class="item">Royal 1</div>
+                <div class="item">Royal 2</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle"></h3>
+        <p style="margin-top:10px; font-size:12px; opacity:0.7;">
+            Premium curated luxury collection experience.
+        </p>
+        <div class="close" onclick="closeModal()">Close</div>
+    </div>
+</div>
+
+<script>
+function openModal(title){
+    document.getElementById('modal').style.display='flex';
+    document.getElementById('modalTitle').innerText=title;
+}
+
+function closeModal(){
+    document.getElementById('modal').style.display='none';
+}
+</script>
+
+</body>
+</html>
