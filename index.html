@@ -14,166 +14,89 @@
     box-sizing:border-box;
 }
 
-html, body{
-    width:100%;
-    height:100%;
-    overflow-x:hidden;
-}
-
 body{
     background: radial-gradient(circle at top, #060a18, #000);
     color:#fff;
     font-family: Inter, sans-serif;
     display:flex;
     justify-content:center;
-    align-items:center;
     padding:10px;
 }
 
-/* APP CONTAINER */
+/* APP */
 .app{
     width:100%;
     max-width:560px;
-    height:100vh;
+    min-height:100vh;
     background: linear-gradient(180deg, rgba(10,18,40,0.92), rgba(0,0,0,0.98));
     border:1px solid rgba(212,175,55,0.25);
     display:flex;
     flex-direction:column;
     overflow:hidden;
-    box-shadow: 0 0 60px rgba(0,0,0,0.7);
 }
 
 /* HEADER */
 header{
     padding:14px;
     text-align:center;
-    font-size:clamp(10px, 2vw, 12px);
+    font-size:12px;
     letter-spacing:4px;
     color:#D4AF37;
     background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(12px);
-    position:sticky;
-    top:0;
-    z-index:10;
 }
 
 /* HERO */
 .hero{
-    height:clamp(120px, 20vh, 200px);
-    overflow:hidden;
-    border-bottom:1px solid rgba(212,175,55,0.15);
-}
-
-.slides{
-    display:flex;
-    width:300%;
-    height:100%;
-    animation: slide 12s infinite;
-}
-
-.slide{
-    width:100%;
+    height:160px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-family:"Playfair Display",serif;
-    font-size:clamp(14px, 4vw, 22px);
+    font-family:"Playfair Display";
+    font-size:22px;
     color:#D4AF37;
-    text-align:center;
-    background: radial-gradient(circle at top, rgba(212,175,55,0.18), transparent), #0a1228;
-    padding:10px;
+    background: radial-gradient(circle at top, rgba(212,175,55,0.2), transparent);
 }
 
-@keyframes slide{
-    0%{transform:translateX(0);}
-    33%{transform:translateX(-100%);}
-    66%{transform:translateX(-200%);}
-    100%{transform:translateX(0);}
-}
-
-/* SCROLL AREA */
+/* SCREEN */
 .screen{
-    flex:1;
-    overflow-y:auto;
     padding:12px;
-    -webkit-overflow-scrolling:touch;
-}
-
-/* SECTION TITLE */
-.section-title{
-    margin:18px 0 10px;
-    font-size:clamp(10px, 2vw, 12px);
-    letter-spacing:2px;
-    color:#D4AF37;
 }
 
 /* CARD */
 .card{
-    background: rgba(255,255,255,0.03);
-    border:1px solid rgba(212,175,55,0.18);
-    padding:12px;
-    border-radius:16px;
     margin-bottom:14px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,55,0.18);
     cursor:pointer;
-    transition:0.3s ease;
-    backdrop-filter: blur(10px);
+    transition:0.3s;
 }
 
 .card:hover{
     transform:translateY(-4px);
-    border:1px solid rgba(212,175,55,0.5);
+    border-color:rgba(212,175,55,0.5);
+}
+
+/* CARD IMAGE */
+.card-img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
 }
 
 /* CARD TITLE */
 .card-title{
-    font-size:clamp(12px, 2.5vw, 14px);
+    padding:10px;
+    font-size:14px;
     font-weight:600;
-    margin-bottom:10px;
-}
-
-/* CAROUSEL */
-.carousel{
-    overflow:hidden;
-    border-radius:14px;
-    width:100%;
-}
-
-.track{
-    display:flex;
-    gap:10px;
-    width:max-content;
-    animation: scroll 14s linear infinite;
-}
-
-.carousel:hover .track{
-    animation-play-state:paused;
-}
-
-@keyframes scroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
-}
-
-/* ITEM */
-.item{
-    min-width:clamp(100px, 30vw, 150px);
-    height:clamp(110px, 32vw, 160px);
-    border-radius:14px;
-    background: linear-gradient(145deg, rgba(10,18,40,0.9), rgba(0,0,0,0.7));
-    border:1px solid rgba(212,175,55,0.15);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    flex-shrink:0;
-    position:relative;
+    background: rgba(0,0,0,0.4);
 }
 
 /* MODAL */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.9);
     display:none;
     justify-content:center;
     align-items:center;
@@ -181,33 +104,43 @@ header{
 }
 
 .modal-content{
-    width:90%;
-    max-width:340px;
+    width:100%;
+    max-width:420px;
     background:#0a1228;
     border:1px solid rgba(212,175,55,0.3);
-    border-radius:18px;
-    padding:20px;
-    text-align:center;
+    border-radius:16px;
+    padding:15px;
+    max-height:80vh;
+    overflow-y:auto;
 }
 
+.modal-title{
+    text-align:center;
+    color:#D4AF37;
+    margin-bottom:10px;
+}
+
+/* GALLERY GRID */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+}
+
+.gallery img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* CLOSE */
 .close{
+    text-align:center;
     margin-top:12px;
     color:#D4AF37;
     cursor:pointer;
-    font-size:12px;
-}
-
-/* SMALL DEVICES FIX */
-@media (max-width:400px){
-    .app{
-        height:100vh;
-        border-radius:0;
-    }
-
-    .item{
-        min-width:120px;
-        height:120px;
-    }
 }
 
 </style>
@@ -219,74 +152,76 @@ header{
 
 <header>LUXE GALLERY</header>
 
-<div class="hero">
-    <div class="slides">
-        <div class="slide">CURATED LUXURY</div>
-        <div class="slide">FASHION • FRAGRANCE</div>
-        <div class="slide">TIMELESS ELEGANCE</div>
-    </div>
-</div>
+<div class="hero">CURATED LUXURY</div>
 
 <div class="screen">
 
-    <div class="section-title">Top Wear</div>
-
-    <div class="card" onclick="openModal('T-Shirts Collection')">
-        <div class="card-title">T-Shirts</div>
-        <div class="carousel">
-            <div class="track">
-                <div class="item">Tee 1</div>
-                <div class="item">Tee 2</div>
-                <div class="item">Tee 3</div>
-                <div class="item">Tee 4</div>
-                <div class="item">Tee 1</div>
-            </div>
-        </div>
+    <!-- T-SHIRTS -->
+    <div class="card" onclick="openGallery('T-Shirts', tshirts)">
+        <img class="card-img" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" />
+        <div class="card-title">T-Shirts Collection</div>
     </div>
 
-    <div class="card" onclick="openModal('Shirts Collection')">
-        <div class="card-title">Shirts</div>
-        <div class="carousel">
-            <div class="track">
-                <div class="item">Shirt 1</div>
-                <div class="item">Shirt 2</div>
-                <div class="item">Shirt 3</div>
-                <div class="item">Shirt 1</div>
-            </div>
-        </div>
+    <!-- SHIRTS -->
+    <div class="card" onclick="openGallery('Shirts', shirts)">
+        <img class="card-img" src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd15" />
+        <div class="card-title">Shirts Collection</div>
     </div>
 
-    <div class="section-title">Fragrance</div>
-
-    <div class="card" onclick="openModal('Perfumes Collection')">
-        <div class="card-title">Perfumes</div>
-        <div class="carousel">
-            <div class="track">
-                <div class="item">Royal 1</div>
-                <div class="item">Royal 2</div>
-                <div class="item">Royal 3</div>
-                <div class="item">Royal 1</div>
-            </div>
-        </div>
+    <!-- PERFUMES -->
+    <div class="card" onclick="openGallery('Perfumes', perfumes)">
+        <img class="card-img" src="https://images.unsplash.com/photo-1541643600914-78b084683601" />
+        <div class="card-title">Perfumes Collection</div>
     </div>
 
 </div>
 </div>
 
+<!-- GALLERY MODAL -->
 <div class="modal" id="modal">
     <div class="modal-content">
-        <h3 id="modalTitle"></h3>
-        <p style="margin-top:10px; font-size:12px; opacity:0.7;">
-            Premium curated luxury collection experience.
-        </p>
+        <h3 class="modal-title" id="modalTitle"></h3>
+
+        <div class="gallery" id="gallery"></div>
+
         <div class="close" onclick="closeModal()">Close</div>
     </div>
 </div>
 
 <script>
-function openModal(title){
+const tshirts = [
+    "https://images.unsplash.com/photo-1520975954732-35dd22299694",
+    "https://images.unsplash.com/photo-1520975682031-a54f0c1b1b9a",
+    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f",
+    "https://images.unsplash.com/photo-1521334884684-d80222895322"
+];
+
+const shirts = [
+    "https://images.unsplash.com/photo-1593032465171-b9f0b0b7c1e4",
+    "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+    "https://images.unsplash.com/photo-1520974735194-6fdd9f2f7c91",
+    "https://images.unsplash.com/photo-1603252109303-2751441dd157"
+];
+
+const perfumes = [
+    "https://images.unsplash.com/photo-1594035910387-fea47794261f",
+    "https://images.unsplash.com/photo-1615634260167-c8cdede054de",
+    "https://images.unsplash.com/photo-1615634260183-3f3f4b7f9f35",
+    "https://images.unsplash.com/photo-1620916566390-39fba1f2c0d6"
+];
+
+function openGallery(title, images){
     document.getElementById('modal').style.display='flex';
-    document.getElementById('modalTitle').innerText=title;
+    document.getElementById('modalTitle').innerText = title;
+
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = "";
+
+    images.forEach(img=>{
+        const image = document.createElement("img");
+        image.src = img;
+        gallery.appendChild(image);
+    });
 }
 
 function closeModal(){
